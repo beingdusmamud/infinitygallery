@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinity Gallery - Categories</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="https://storage.googleapis.com/a1aa/image/b233cc08-2efa-439b-8927-6ba93ef4dc46.jpeg"
+      type="image/jpeg"
+    />
+    <style>
+      :root {
+        --bg-dark: #121212;
+        --primary-cyan: #00bcd4;
+        --secondary-pink: #ff4081;
+        --text-light: #e0e0e0;
+        --text-gray: #b0bec5;
+        --overlay-dark: rgba(18, 18, 18, 0.9);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-gray);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      .categories-header {
+        background: linear-gradient(
+          135deg,
+          var(--bg-dark) 0%,
+          rgba(0, 188, 212, 0.1) 100%
+        );
+        text-align: center;
+        padding: 50px 0;
+      }
+
+      .categories-title {
+        color: var(--text-light);
+        font-size: 3rem;
+        background: linear-gradient(
+          45deg,
+          var(--primary-cyan),
+          var(--secondary-pink)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      .search-bar {
+        display: flex;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .search-input {
+        flex-grow: 1;
+        padding: 12px 20px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 2px solid var(--primary-cyan);
+        border-right: none;
+        border-radius: 30px 0 0 30px;
+        color: var(--text-light);
+      }
+
+      .search-button {
+        padding: 12px 20px;
+        background-color: var(--primary-cyan);
+        border: 2px solid var(--primary-cyan);
+        border-radius: 0 30px 30px 0;
+        color: var(--bg-dark);
+        cursor: pointer;
+      }
+
+      /* Categories Grid */
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+        padding: 50px 0;
+      }
+
+      .category-card {
+        background-color: rgba(0, 188, 212, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+
+      .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 188, 212, 0.2);
+      }
+
+      .category-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .category-card:hover .category-image {
+        transform: scale(1.1);
+      }
+
+      .category-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .category-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .category-icon {
+        font-size: 2rem;
+        color: var(--primary-cyan);
+      }
+
+      .category-name {
+        color: var(--text-light);
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .category-count {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      .view-category-btn {
+        background-color: var(--primary-cyan);
+        color: var(--bg-dark);
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .view-category-btn:hover {
+        background-color: var(--secondary-pink);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .categories-title {
+          font-size: 2.5rem;
+        }
+
+        .search-bar {
+          flex-direction: column;
+        }
+
+        .search-input,
+        .search-button {
+          width: 100%;
+          border-radius: 30px;
+          margin-bottom: 10px;
+        }
+
+        .categories-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 20px;
+        }
+
+        .category-card {
+          height: 300px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .categories-title {
+          font-size: 2rem;
+        }
+
+        .category-icon {
+          font-size: 1.5rem;
+        }
+
+        .category-name {
+          font-size: 1rem;
+        }
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background-color: rgba(0, 188, 212, 0.1);
+        color: var(--text-gray);
+        padding: 40px 20px;
+        margin-top: 40px;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 20px;
+      }
+
+      .footer-logo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 15px var(--primary-cyan);
+      }
+
+      .footer-links h4,
+      .footer-social h4 {
+        color: var(--text-light);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links ul li a,
+      .footer-bottom a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: var(--transition-smooth);
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--primary-cyan);
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icon {
+        color: var(--text-gray);
+        font-size: 1.5rem;
+        transition: var(--transition-smooth);
+      }
+
+      .social-icon:hover {
+        color: var(--secondary-pink);
+        transform: scale(1.2);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 188, 212, 0.2);
+        margin-top: 20px;
+      }
+
+      .heart {
+        color: var(--secondary-pink);
+        animation: pulse 1.5s infinite;
+      }
+
+      .creator-link {
+        color: var(--primary-cyan);
+        font-weight: bold;
+        text-decoration: none;
+        transition: var(--transition-smooth);
+      }
+
+      .creator-link:hover {
+        color: var(--secondary-pink);
+        text-decoration: underline;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      /* Responsive Footer */
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer-links,
+        .footer-social {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .social-icons {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Categories Header -->
+      <header class="categories-header">
+        <h1 class="categories-title">Explore Categories</h1>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search categories..."
+          />
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Categories Grid -->
+      <main class="categories-grid" id="categoriesGrid">
+        <!-- Category Cards will be dynamically added here -->
+      </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/b233cc08-2efa-439b-8927-6ba93ef4dc46.jpeg"
+            alt="Infinity Gallery Logo"
+          />
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a href="https://beingdusmamud.github.io/infinitygallery/"
+                >Home</a
+              >
+            </li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/dvmx_19/" class="social-icon"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://www.facebook.com/dusmamud01" class="social-icon"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="https://github.com/beingdusmamud" class="social-icon"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          Made with <span class="heart">❤</span> by
+          <a
+            href="https://www.instagram.com/dvmx_19/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="creator-link"
+            >Dus Mamud</a
+          >
+        </p>
+        <p>&copy; 2024-25 Infinity Gallery. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Category Data
+      const categories = [
+        {
+          name: "Nature",
+          icon: "fas fa-leaf",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/3433b20a-cf02-4da3-9b9a-6c015ea81386.jpeg",
+          count: 245,
+        },
+        {
+          name: "Urban",
+          icon: "fas fa-city",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/0fbfffca-7b6e-48b5-8068-7a9fc9431105.jpeg",
+          count: 187,
+        },
+        {
+          name: "Animals",
+          icon: "fas fa-paw",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/5dd59bcc-2629-45b2-84a4-219427f785e3.jpeg",
+          count: 312,
+        },
+        {
+          name: "Technology",
+          icon: "fas fa-laptop",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/e5856bb8-a215-4bb2-afe9-6956d4038585.jpeg",
+          count: 150,
+        },
+        {
+          name: "Abstract",
+          icon: "fas fa-paint-brush",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/47899569-a15b-4974-8f03-1173451d433d.jpeg",
+          count: 98,
+        },
+        {
+          name: "People",
+          icon: "fas fa-users",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/863b4bc8-96ef-4b3a-b026-87571aba86db.jpeg",
+          count: 220,
+        },
+        {
+          name: "Food",
+          icon: "fas fa-utensils",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/6f603f21-a191-476e-8525-7647cb829b8d.jpeg",
+          count: 175,
+        },
+        {
+          name: "Travel",
+          icon: "fas fa-plane",
+          imageUrl:
+            "https://storage.googleapis.com/a1aa/image/687ce3ed-f76e-4712-bb58-09a3d0d78161.jpeg",
+          count: 300,
+        },
+      ];
+
+      // Function to render categories
+      function renderCategories() {
+        const categoriesGrid = document.getElementById("categoriesGrid");
+        categories.forEach((category) => {
+          const categoryCard = document.createElement("div");
+          categoryCard.className = "category-card";
+          categoryCard.innerHTML = `
+                    <img src="${category.imageUrl}" alt="${category.name}" class="category-image">
+                    <div class="category-overlay">
+                        <div class="category-info">
+                            <i class="${category.icon} category-icon"></i>
+                            <span class="category-name">${category.name}</span>
+                            <span class="category-count">(${category.count} images)</span>
+                        </div>
+                        <button class="view-category-btn">View</button>
+                    </div>
+                `;
+          categoriesGrid.appendChild(categoryCard);
+        });
+      }
+
+      // Call the function to render categories
+      renderCategories();
+    </script>
+  </body>
+</html>

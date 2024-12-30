@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Infinity Gallery</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="https://storage.googleapis.com/a1aa/image/b233cc08-2efa-439b-8927-6ba93ef4dc46.jpeg"
+      type="image/jpeg"
+    />
+    <style>
+      :root {
+        --bg-dark: #121212;
+        --primary-cyan: #00bcd4;
+        --secondary-pink: #ff4081;
+        --text-light: #e0e0e0;
+        --text-gray: #b0bec5;
+        --overlay-dark: rgba(18, 18, 18, 0.9);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-gray);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      .about-header {
+        background: linear-gradient(
+          135deg,
+          var(--bg-dark) 0%,
+          rgba(0, 188, 212, 0.1) 100%
+        );
+        text-align: center;
+        padding: 50px 0;
+      }
+
+      .about-logo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 30px var(--primary-cyan);
+        margin-bottom: 20px;
+      }
+
+      .about-title {
+        color: var(--text-light);
+        font-size: 3rem;
+        background: linear-gradient(
+          45deg,
+          var(--primary-cyan),
+          var(--secondary-pink)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* About Sections */
+      .about-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+        background-color: rgba(0, 188, 212, 0.05);
+        border-radius: 15px;
+        padding: 40px;
+        margin-top: 50px;
+      }
+
+      .about-section-content {
+        flex: 1;
+      }
+
+      .about-section h2 {
+        color: var(--primary-cyan);
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+
+      .about-section p {
+        margin-bottom: 15px;
+      }
+
+      .about-icon {
+        font-size: 3rem;
+        color: var(--primary-cyan);
+        margin-right: 20px;
+      }
+
+      /* Features Grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .feature-item {
+        background-color: rgba(0, 188, 212, 0.1);
+        padding: 25px;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary-cyan);
+        margin-bottom: 15px;
+      }
+
+      .feature-title {
+        color: var(--text-light);
+        margin-bottom: 10px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .about-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .about-icon {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+
+        .about-title {
+          font-size: 2.5rem;
+        }
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background-color: rgba(0, 188, 212, 0.1);
+        color: var(--text-gray);
+        padding: 40px 20px;
+        margin-top: 40px;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 20px;
+      }
+
+      .footer-logo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 15px var(--primary-cyan);
+      }
+
+      .footer-links h4,
+      .footer-social h4 {
+        color: var(--text-light);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links ul li a,
+      .footer-bottom a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: var(--transition-smooth);
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--primary-cyan);
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icon {
+        color: var(--text-gray);
+        font-size: 1.5rem;
+        transition: var(--transition-smooth);
+      }
+
+      .social-icon:hover {
+        color: var(--secondary-pink);
+        transform: scale(1.2);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 188, 212, 0.2);
+        margin-top: 20px;
+      }
+
+      .heart {
+        color: var(--secondary-pink);
+        animation: pulse 1.5s infinite;
+      }
+
+      .creator-link {
+        color: var(--primary-cyan);
+        font-weight: bold;
+        text-decoration: none;
+        transition: var(--transition-smooth);
+      }
+
+      .creator-link:hover {
+        color: var(--secondary-pink);
+        text-decoration: underline;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      /* Responsive Footer */
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer-links,
+        .footer-social {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .social-icons {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- About Header -->
+      <header class="about-header">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/b233cc08-2efa-439b-8927-6ba93ef4dc46.jpeg"
+          alt="Infinity Gallery Logo"
+          class="about-logo"
+        />
+        <h1 class="about-title">About Infinity Gallery</h1>
+      </header>
+
+      <!-- Mission Section -->
+      <section class="about-section">
+        <i class="fas fa-rocket about-icon"></i>
+        <div class="about-section-content">
+          <h2>Our Mission</h2>
+          <p>
+            Infinity Gallery is dedicated to creating a seamless, immersive
+            visual experience. We aim to provide a platform that celebrates
+            creativity, diversity, and the art of photography through an
+            intuitive and beautiful interface.
+          </p>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section>
+        <h2
+          style="
+            color: var(--primary-cyan);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: larger;
+          "
+        >
+          Our Key Features
+        </h2>
+        <div class="features-grid">
+          <div class="feature-item">
+            <i class="fas fa-search feature-icon"></i>
+            <h3 class="feature-title">Advanced Search</h3>
+            <p>
+              Powerful search functionality to find your perfect image quickly.
+            </p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-th feature-icon"></i>
+            <h3 class="feature-title">Diverse Categories</h3>
+            <p>Explore 30+ unique image categories from around the world.</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-expand feature-icon"></i>
+            <h3 class="feature-title">Fullscreen Viewer</h3>
+            <p>Immersive fullscreen mode with navigation and image details.</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-mobile-alt feature-icon"></i>
+            <h3 class="feature-title">Responsive Design</h3>
+            <p>Seamless experience across all devices and screen sizes.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Creator Section -->
+      <section class="about-section" style="margin-top: 50px">
+        <i class="fas fa-user-astronaut about-icon"></i>
+        <div class="about-section-content">
+          <h2>Meet the Creator</h2>
+          <p>
+            Infinity Gallery was created by Dus Mamud, a passionate developer
+            dedicated to creating innovative and user-friendly web experiences.
+            With a vision to make digital art exploration intuitive and
+            enjoyable, Dus has crafted this gallery as a tribute to visual
+            creativity.
+          </p>
+          <p>
+            <a
+              href="https://github.com/beingdusmamud"
+              target="_blank"
+              style="color: var(--primary-cyan); text-decoration: none"
+            >
+              <i class="fab fa-github"></i> GitHub Profile
+            </a>
+          </p>
+        </div>
+      </section>
+    </div>
+    <!-- Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/b233cc08-2efa-439b-8927-6ba93ef4dc46.jpeg"
+            alt="Infinity Gallery Logo"
+          />
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a href="https://beingdusmamud.github.io/infinitygallery/"
+                >Home</a
+              >
+            </li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/dvmx_19/" class="social-icon"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://www.facebook.com/dusmamud01" class="social-icon"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="https://github.com/beingdusmamud" class="social-icon"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          Made with <span class="heart">❤</span> by
+          <a
+            href="https://www.instagram.com/dvmx_19/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="creator-link"
+            >Dus Mamud</a
+          >
+        </p>
+        <p>&copy; 2024-25 Infinity Gallery. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
